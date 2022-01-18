@@ -20,3 +20,24 @@ src(o3).scale(1.01).rotate(0.01).modulateHue(o3).mult(o3,0.001).out(o3)
 
 
 src(o3).out(o3)
+
+
+// nice frame, noise to modulate osc 
+s0.initCam()
+src(s0)
+	.repeat(3, 3)
+	.color(0, 0, 1)
+		.add(src(o1).mask(shape(3).invert()))
+	.add(shape(3)
+		.invert()
+		.modulateScale(noise(4), 0.1)
+		.color(0, 0, 1))
+	.blend(o0, 0.9)
+	.scale(1.02)
+	.mask(shape(4, 0.95))
+	.add(osc(100, 0.1, 2)
+		.modulateRotate(noise(2))
+		.mask(shape(4, 0.7)
+			.invert())
+		.thresh())
+	.out()
