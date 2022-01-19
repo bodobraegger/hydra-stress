@@ -41,3 +41,12 @@ src(s0)
 			.invert())
 		.thresh())
 	.out()
+
+// whacko selfies
+s0.initCam()
+osc().thresh().modulate(voronoi(0.5, 0.2)).modulate(voronoi(1)).modulate(noise(1)).modulateScale(noise(1, 0.2).thresh())
+  .diff(src(s0).modulate(voronoi(4,0.2)).invert().diff(shape(3).modulate(voronoi(4,0.2)))
+  .mult(shape(4, 0.9)))
+  .blend(o0)
+  .scale(1,1,()=>window.innerWidth/window.innerHeight)
+  .out()
