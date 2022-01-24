@@ -50,3 +50,18 @@ osc().thresh().modulate(voronoi(0.5, 0.2)).modulate(voronoi(1)).modulate(noise(1
   .blend(o0)
   .scale(1,1,()=>window.innerWidth/window.innerHeight)
   .out()
+
+// procedural graphics
+voronoi(10,0).diff(src(o1).scale(0.9)).diff(shape(()=>Math.sin(time)+3)).mask(shape(99, 0.5).invert()).out(o1)
+src(s0)
+.modulate(osc().thresh().modulate(noise(1))).modulate(voronoi(1).thresh())
+.modulateScale(shape(()=>Math.sin(time)*0.5+3), ()=>Math.sin(time)*0.5)
+.mask(shape(4, 0.5)).color(1,0,)
+.modulate(o0)
+.add(src(o1).mask(shape(4, 0.5).invert()))
+  .scale(.6, 1, () => window.innerWidth / window.innerHeight)
+.mult(shape(4, 0.8),0.9)
+.add(shape(4, 0.9).invert())
+  
+  .out(o0)
+
