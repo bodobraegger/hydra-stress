@@ -35,7 +35,19 @@ d1 $ n "[<[d4,f4,a4] [a4,c4,e4] [g4,bf4,d5] [bf4,d4,f4]>]"
   # gain 0.8
   # shape 0
   # cutoff 4000
-  # cloudsmode 1
+  # cloudsmode 0
+  # clouds      (range 0.3 0.7 $ slow 3 sine) 0.8 0.9 0.9
+  # cloudsblend (range 0.3 0.7 $ slow 3 sine) 0.9 0.3 0.9
+  -- # verb 0.8 0.6 0.2 1
+
+d2 $ note(arp "up down" "[<[d4,f4,a4,a5]*2 [a4,c4,e4, e5]*2 [g4,bf4,d5, d6]*2 [bf4,d4,f4, f6]*2>]")
+  # s "superchip"
+  # voice (slow 16 $ sine * 0.5 + 0.2)
+  # attack 0.5 # rel 1
+  # gain 0.8
+  # shape 0
+  # cutoff 4000
+  # cloudsmode 0
   # clouds      (range 0.3 0.7 $ slow 3 sine) 0.8 0.9 0.9
   # cloudsblend (range 0.3 0.7 $ slow 3 sine) 0.9 0.3 0.9
   -- # verb 0.8 0.6 0.2 1
