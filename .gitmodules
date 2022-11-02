@@ -1,0 +1,3 @@
+[submodule "tidal/imports/jarmlib"]
+	path = tidal/imports/jarmlib
+	url = https://github.com/jarmitage/jarmlib.git

@@ -1,0 +1,131 @@
+p1 -- plaits
+  $ sl 2
+  $ fa "<1 [1 2] <1 [0.5 3]> [1 [2 4]]>"
+  $ struct "t(9,16)"
+  $ n (arp "<up down diverge>" "<a'm9'8 e'7sus4'8>")
+  # engine 14
+  # s "plaits"
+  # adsr "0.1:1:1:0.5"
+  # timbre (rsinf 0 1 0.25)
+  # harm (rsinf 0 1 0.33)
+  # morph (rsinf 0 1 0.11)
+  # lpgdecay (rsinf 0 1 0.44)
+  # lpgcolour (rsinf 0 1 0.35)
+
+p1 -- braids
+  $ n (arp "<up down>" "<c'maj'7*2 d'min'7*2 e'min'7*2 [a'min'7 f'maj'7]>" -24)
+  # s "braids"
+  # adsr "0.3:1:1:0.3"
+  # model (slow 16 $ r 30)
+  # timbre (rsinf 0.2 0.8 0.035)
+  # color (rsinf 0.2 0.8 0.025)
+
+p2 -- braids - voices
+  $ note(arp "<up down>" "[<[d4,f4,f6?,a4]*2 [a4,~,[c4,c5],e4]*2 [g4,bf3,bf4,d4]*2 [bf4,d4,d5,f4]*2, <~ ~ ~ ~ ~ ~ ~@1.5 [d5 d5 d5]*2>>*2]/2"|+12)
+  # s "braids"
+  # adsr "0:1:1:2"
+  # model 22
+  # timbre (rsinf 0.1 0.9 1)
+  # color  (rsinf 0.1 0.9 1.3)
+  # cloudsmode 0
+  # clouds      (rsinf 0.1 0.9 1) 0.8 0.9 0.9
+  # cloudsblend (rsinf 0.1 0.9 1.3) 0.9 0.3 0.9
+  # gain 0.8
+
+
+let s8p = (slow 8 $ (perlin))
+
+p1 -- omi (elements)
+  -- $ slow 2
+  $ n (arp "<up down>" "<c'maj'7*2 d'min'7*2 e'min'7*2 [a'min'7 f'maj'7]>" +24)
+  # s "omi"
+  -- # sustain 1
+  # adsr "0:1:1:0.5"
+  # cloudsmode (slow 32 $ (irand 4))
+  # clouds (perf 16) (perf 16) (perf 16) (perf 16)
+  # cloudsblend (perf 16) (perf 16) (perf 16) (perf 16)
+
+p1 -- tides
+  $ sl 4
+  $ fa "<1 [1 2] <1 [0.5 3]> [1 [2 4]]>"
+  $ struct "t(<11 21 17 15>,32)"
+  $ n (seg 32 $ rsinf 0 12 0.25 * rtrif 0 2 0.7 + "<0 8 4 1 3>" + "[0 0 12 -12]/4" -24)
+  # s "tides"
+  # mode (sl 4 $ "0 1 2 3")
+  # sustain (rsinf 0.5 2 1)
+  # tidesshape (rsinf 0 1 0.11)
+  # tidessmooth (rsinf 0.5 1 0.33)
+  # slope (rsinf 0 1 0.22)
+  # shift (rsinf 0 1 0.44)
+
+p1 -- elements
+  $ fa "<1 [1 2] <1 [0.5 3]> [1 [2 4]]>"
+  $ struct "t(<11 21 17 15>,32)"
+  $ elementspitch (seg 32 $ rsinf 0 12 0.25 * rtrif 0 2 0.7 + "<0 8 4 1 3>" + "[0 0 12 -12]/4")
+  # s "[[808bd:1(3,8)]*<1 2>, ~ 808sd:1]" --, 808:1*16]"
+  # sustain (rsinf 0.4 1.5 1)
+  # elementsstrength (rsinf 0 1 0.08)
+  # elementscontour (rsinf 0 1 0.10)
+  # elementsbowlevel (rsinf 0 1 0.12)
+  # elementsblowlevel (rsinf 0 1 0.14)
+  # elementsstrikelevel (rsinf 0 1 0.16)
+  # elementsflow (rsinf 0 1 0.18)
+  # elementsmallet (rsinf 0 1 0.20)
+  # elementsbowtimb (rsinf 0 1 0.22)
+  # elementsblowtimb (rsinf 0 1 0.24)
+  # elementsstriketimb (rsinf 0 1 0.26)
+  # elementsgeom (rsinf 0 1 0.28)
+  # elementsbright (rsinf 0 1 0.30)
+  # elementsdamp (rsinf 0 1 0.32)
+  # elementspos (rsinf 0 1 0.34)
+  # elementsspace (rsinf 0 1 0.36)
+  # elementsmodel "<0 1 2>"
+  # elementseasteregg 0
+
+p1 -- mu
+  $ s "[[808bd:1(3,8)]*<1 2>, ~ [808sd:4(3,8)], 808:1*16]"
+  # mu 10
+
+p1 -- rings
+  $ s "[[808bd:1(3,8)]*<1 2 0.5>, ~ [808sd:4(3,8)], 808:1*<16 [32 16!3] 16 [12 24]>]"
+  # ringsfreq (rsinf 50 100 0.22 * rtrif 1 1.5 1.3 * rsinf 0.8 1.2 4 * "<1 3 0.5 5>")
+  # ringsstruct (rsinf 0 1 0.14)
+  # ringsbright (rsinf 0.5 1 0.27)
+  # ringsdamp (rsinf 0 1 0.36)
+  # ringspos (rsinf 0 1 0.46)
+  # ringsmodel (sl 8 $ "[0 1 2 3 4 5]")
+  # ringspoly 0
+  # ringsinternal 0
+  # ringseasteregg (sl 7 $ "[0 1 2 3 4 5]")
+
+p1 -- ripples MEMORY_LEAK!
+  $ s "[[808bd:1(3,8)]*<1 2 0.5>, ~ [808sd:4(3,8)], 808:1*<16 [32 16!3] 16 [12 24]>]"
+  # ripplescf 0.5
+  # ripplesreson 0.4
+  # ripplesdrive 1
+
+p1 -- global_mi_verb
+  $ s "[[808bd:1(3,8)]*<1 2 0.5>, ~ [808sd:4(3,8)], 808:1*<16 [32 16!3] 16 [12 24]>]"
+  # verbwet 1
+  # verbtime 0.9
+  # verbdamp 0.5
+  # verbhp 0.5
+  # verbfreeze 0
+  # verbdiff 0.625
+  # verbgain 1
+
+p1 -- global_mi_verb
+  $ s "[[808bd:1(3,8)]*<1 2 0.5>, ~ [808sd:4(3,8)], 808:1*<16 [32 16!3] 16 [12 24]>]"
+  # cloudspitch 1
+  # cloudspos 0.5
+  # cloudssize 0.5
+  # cloudsdens 0.5
+  # cloudstex 0.5
+  # cloudswet 0.5
+  # cloudsgain 0.5
+  # cloudsspread 0.5
+  # cloudsrvb 0.5
+  # cloudsfb 0.5
+  # cloudsfreeze 0.5
+  # cloudsmode 0.5
+  # cloudslofi 0.5

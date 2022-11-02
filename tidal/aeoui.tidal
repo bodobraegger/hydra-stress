@@ -1,0 +1,43 @@
+-- https://cluf.tidalcycles.org/t/week-1-lesson-4-mini-notation-part-2/416
+d1 $ n "[c4,ef4,g4] [f4,af4,d4]" # s "superpiano"
+# room 0.4
+# size 0.9
+# shape 0.1
+
+d1 $ s "hh*8"
+
+d2 $ s "fd ~ ~ ~ ~ fd ~ ~ fd"
+
+d1 $ sound "[fd sd?, hh27?*8]"
+
+a_e_o_u_i = [0 4 14 20 8]
+
+d1 $ n "[0 4 14 20 8]?" # sound "alphafet"
+
+d1 $ n "<[c4,ef4,g4] [f4,af4,d4] ~ [[c4,ef4,[a5 g4]]]>" # s "superchip"
+
+d1 $ n "<[c4,ef4,g4] [f4,af4,d4] ~ [[c4,ef4,[a5 g4]]]>" # s "supersaw" # vowel "<a a e e o o u u i i>"  # gain 0.6
+
+d6 $ n "<[c4,ef4,g4] [f4,af4,d4] ~ [[c4,ef4,[a5 g4]]]>" # s "superpiano" # gain (slow 4 $ cosine + 0.2)
+
+d2 $ s "hh?*8 hh?*16" # pan (rand)
+
+d3 $ s "[insect:1?*4, bd ~ ~ ~ bd]" # pan (rand)
+
+d1 $ n "<[0,3,7] [4,8,1] ~ [[0,3,[12 7]]]>" # s "superpiano"
+
+d4 $ s "amencutup*8" # n (irand 32)
+
+d5 $ s "alphabet" # n "<0 2 0 1>" # shape 0.4
+
+d6 $ silence
+
+setcps 0.5
+
+hush
+
+#room 0.4
+#size 0.9
+#delay 1.5
+
+hush
