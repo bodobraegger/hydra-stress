@@ -19,42 +19,42 @@ d1 $ n "[0 4 14 20 8]?" # sound "alphabet"
 
 let root="fs"
 
-d1 $ n (scale "minor" $ "[<[0,2,4] [4,6,8] [3,5,7] [5,7,9]>]"|-7) |+n root
-  # s "superchip"
-  # voice (slow 16 $ sine * 0.5 + 0.2)
+d1 $ n (scale "minor" $ "[< [0,2,4] [3,5,0] [5,0,2] [[4,-1,1] [2,4,6]] >]"|-7) |+n root
+  # s "braids"
+  # timbre (rsinf 0.2 0.7 (1/16))
+  # color (rsinf 0.2 0.7 (1/16))
+  # model 0
   # adsr "0.2:1:1:1"
   # gain 0.8
-  # cutoff 4000
+  # cutoff 5000
   # verb 0.8 1 0.5 0.2
   # cloudsmode 0
   # clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
-  # cloudsblend (rperf 0.8 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.39 0.5) (rperf 0.5 0.8 0.5)
+  # cloudsblend (rperf 0.1 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.39 0.5) (rperf 0.5 0.8 0.5)
 
+d1 $ silence
 
-d2 $ stack [
-  (arp "<up down>" $ n (scale "minor" $ "[<[0,2,4,6]*2 [4,6,1,3]*2 [3,5,7,2]*2 [5,7,2,4]*2>]") |+n root)
-  ]
-  # s "superchip"
-  # voice (slow 16 $ sine * 0.5 + 0.2)
-  # adsr "0.2:1:1:.3"
-  # gain 0.9
-  # cutoff 3000
-  # cloudsmode 0
-  # clouds      (rrandf 0.1 0.8 0.5) (rrandf 0.5 0.8 0.5) (rrandf 0.8   1.0 0.5) (rrandf 0.5 0.8 0.5)
-  # cloudsblend (rrandf 0.8 1.0 0.5) (rrandf 0.2 0.8 0.5) (rrandf 0.38 0.39 0.5) (rrandf 0.5 0.8 0.5)
-  # verb 0.8 1 0.5 0.2
-
-
+d2 $ n (scale "minor" $ ply 3 $ "[< 0 3 5 [4 2] >]"|-21) |+n root
+  # s "braids"
+  # adsr "0.1:1:1:1"
+  # model 23
+  # timbre (rsinf 0.1 0.9 0.2)
+  # color  (rsinf 0.1 0.9 0.3)
+  # gain 1.2
+  # mu 1.3
+  # cutoff 2000
 
 d6 $ stack [
-  s "[east(3,8)]" # n 6
-] # gain   (rrandf 1.0 1.2 8)
-  # speed  (rrandf 0.5 0.8 4)
+  "[bassdm(3,8)]" # n (irand 23)
+  , degBy 0.2 $ s "[east(3,8)]" # n 6
+  , degBy 0.2 $ s "[future(3,8)]"
+] # gain   (rrandf 0.9 1.1 8)
+  # speed  (rrandf 0.5 1 4)
 
 d7 $ stack [
   degBy 0.1 $ s "[hh27*16]" # cutoff (rperf 4500 14500 (1/16))
   , s "[hh*8]"
-  , degBy 0.8 $ s "[east*4]" # n (irand 5) # cutoff (rperf 4500 6000 (1/16)) # gain 0.3
+  , degBy 0.8 $ s "[east*2]" # n (irand 5) # cutoff (rperf 2500 6000 (1/16)) # gain 0.3
 ] # pan    (rperf 0.3 0.8 16)
   # gain   (rperf 0.8 1.2 8)
   # speed  (rrandf 0.3 0.8 4)
