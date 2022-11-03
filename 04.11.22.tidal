@@ -19,8 +19,7 @@ d1 $ n "[0 4 14 20 8]?" # sound "alphabet"
 
 let root="fs"
 
-
-d1 $ n (scale "minor" $ "[<[0,2,4] [4,6,8] [3,5,7] [5,7,9]>]"|-12) |+n root
+d1 $ n (scale "minor" $ "[<[0,2,4] [4,6,8] [3,5,7] [5,7,9]>]"|-7) |+n root
   # s "superchip"
   # voice (slow 16 $ sine * 0.5 + 0.2)
   # adsr "0.2:1:1:1"
@@ -44,6 +43,7 @@ d2 $ stack [
   # clouds      (rrandf 0.1 0.8 0.5) (rrandf 0.5 0.8 0.5) (rrandf 0.8   1.0 0.5) (rrandf 0.5 0.8 0.5)
   # cloudsblend (rrandf 0.8 1.0 0.5) (rrandf 0.2 0.8 0.5) (rrandf 0.38 0.39 0.5) (rrandf 0.5 0.8 0.5)
   # verb 0.8 1 0.5 0.2
+
 
 
 d6 $ stack [
