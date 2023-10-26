@@ -1,0 +1,150 @@
+/*
+ * Your Stylesheet
+ *
+ * This stylesheet is loaded when Atom starts up and is reloaded automatically
+ * when it is changed and saved.
+ *
+ * Add your own CSS or Less to fully customize Atom.
+ * If you are unfamiliar with Less, you can read more about it here:
+ * http://lesscss.org
+ */
+
+
+/*
+ * Examples
+ * (To see them, uncomment and save)
+ */
+
+// style the background color of the tree view
+.tree-view {
+  // background-color: whitesmoke;
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  // color: white;
+  // background-color: hsl(180, 24%, 12%);
+}
+
+// style UI elements inside atom-text-editor
+atom-text-editor .cursor {
+  // border-color: red;
+}
+
+
+&.hydra-flash {
+  // color: @text-color-selected;
+  // background-color: @background-color-selected;
+//  color: #000;
+ //background: #0f0 !important;
+ background: rgba(255, 255, 255, 0.005) !important;
+ filter: invert(.9);
+}
+
+&.evalFlash {
+  // color: @text-color-selected;
+  // background-color: @background-color-selected;
+//  color: #000;
+  background: rgba(255, 255, 255, 0.01) !important;
+  filter: invert(.9);
+ //background: #0f0 !important;
+}
+
+.hydra,
+.hydra canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: black;
+}
+
+body.hydra-enabled {
+    .title-bar-replacer {
+        background: transparent; /*!important;*/
+        border: none !important;
+        text-shadow: 0 1px 1px black;
+        box-shadow: none !important;
+     }
+    .line > span {
+       background: rgba(0, 0, 0, 0.1);
+    }
+    .cursor {
+        width: 0 !important;
+        box-shadow: 0 0 3px #fff !important;
+        border-left: 4px solid #fff !important;
+    }
+    autocomplete-suggestion-list,
+    atom-overlay {
+        background: rgba(0, 0, 0, 0.1) !important;
+    }
+    .region {
+        background: fade(difference(@syntax-color-variable, rgba(255,255,255,.1)), 20%) !important;
+        filter:diff();
+        z-index: 9 !important;
+      }
+
+    .selected:before {
+        background: #0005 !important;
+        border-left: 8px #8888 solid !important;
+    }
+    /* transparent background for file tabs */
+    li.texteditor.tab{
+      background: rgba(0, 0, 0, 0.0)!important;
+    }
+    .vertical-scrollbar {
+      display: none;
+    }
+ }
+
+
+/*
+
+// This file has fallback variables. It specifies all syntax variables that
+// themes must implement if they include a syntax-variables.less file.
+
+// General colors
+@syntax-text-color: #333;
+@syntax-cursor-color: #333;
+@syntax-selection-color: #69c;
+@syntax-selection-flash-color: #00f; // Color the selection is 'flashed' when you run find next
+@syntax-background-color: #fff;
+
+// Guide colors
+@syntax-wrap-guide-color: #ccc;
+@syntax-indent-guide-color: #ccc;
+@syntax-invisible-character-color: #ccc;
+
+// For find and replace markers
+@syntax-result-marker-color: #444;
+@syntax-result-marker-color-selected: #000;
+
+// Gutter colors
+@syntax-gutter-text-color: #333;
+@syntax-gutter-text-color-selected: #000;
+@syntax-gutter-background-color: #ccc;
+@syntax-gutter-background-color-selected: #eee;
+
+// For git diff info. i.e. in the gutter
+@syntax-color-added: green;
+@syntax-color-modified: orange;
+@syntax-color-removed: red;
+@syntax-color-renamed: blue;
+
+// For language entity colors
+@syntax-color-variable: #DF6A73;
+@syntax-color-constant: #DF6A73;
+@syntax-color-property: #DF6A73;
+@syntax-color-value: #D29B67;
+@syntax-color-function: #61AEEF;
+@syntax-color-method: @syntax-color-function;
+@syntax-color-class: #E5C17C;
+@syntax-color-keyword: #a431c4;
+@syntax-color-tag: #b72424;
+@syntax-color-attribute: #87400d;
+@syntax-color-import: #97C378;
+@syntax-color-snippet: #97C378;
+
+*/

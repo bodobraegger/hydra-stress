@@ -1,0 +1,37 @@
+"*":
+  "atom-beautify":
+    general:
+      beautifyEntireFileOnSave: false
+      muteAllErrors: true
+      muteUnsupportedLanguageErrors: true
+  core:
+    autoHideMenuBar: true
+    packagesWithKeymapsDisabled: [
+      "formatter"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "dracula-ui"
+      "atom-light-syntax"
+    ]
+    titleBar: "hidden"
+    uriHandlerRegistration: "always"
+  editor:
+    atomicSoftTabs: false
+    autoIndentOnPaste: false
+    fontFamily: "Hack, Fira Code, Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 15
+    showInvisibles: true
+    showLineNumbers: false
+    softWrap: true
+    softWrapHangingIndent: 2
+    tabType: "soft"
+  "exception-reporting":
+    userId: "f94b9748-7ce1-495c-b37d-f49fa343de8b"
+  "status-bar":
+    isVisible: false
+  "title-bar-replacer":
+    general:
+      autoHide: true
+  welcome:
+    showOnStartup: false
