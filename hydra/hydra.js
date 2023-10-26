@@ -30,7 +30,7 @@ src(s0).kaleid(4).out() // render the webcam to a kaleidoscope
 
 // change hue
 s0.initCam() // initialize a webcam in source buffer s0
-src(s0).rotate(0, 0.1).hue().saturate(5).out() // render the webcam to a kaleidoscope
+src(s0).rotate(0, 0.1).hue().saturate(5).pixelate([100, 200, 900], [50, 100, 200, 900]).out() // render the webcam to a kaleidoscope
 
 // You can also use the screen or any open window as an input to hydra. When using the desktop or atom as an input,  this
 // can create feedback within the visuals. See the feedback.js file for more examples.

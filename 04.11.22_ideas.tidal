@@ -1,0 +1,138 @@
+hush
+
+setcps (120/60/4)
+
+let root="fs"
+
+-- transitions, composition
+$ whenmod 24 8 (# silence)
+
+d1 $ n (scale "minor" $ "[< [0,2,4] [3,5,0] [5,0,2] [[4,-1,1] [2,4,6]] >]"|-7) |+n root
+d2 $ arp "updown" $ n (scale "minor" $ "[< [0,2,4,6] [3,5,0,2] [5,0,2,4] [[4,-1,1,3] [2,4,6,1]] >]"|+7) |+n root
+d2 $ arp "updown" $ n (scale "minor" $ "[<[0,1,8?,4]*2 [4,~,[13,6],1]*2 [3,5,12,0]*2 [5,0,7,2]*2, <~ ~ ~ ~ ~ ~ ~@1.5 [7 7 7]*2>>*2]/2"|+7) |+n root
+-- harmonic
+xfadeIn t bus
+-- rhythmic
+clutchIn
+
+-- harmonic
+# cloudsmode 0
+# clouds      (rsinf 0.3 0.7 (1/3)) 0.8 0.9 0.9
+# cloudsblend (rsinf 0.3 0.7 (1/3)) 0.9 0.3 0.9 -- WATCH OUT FOR FEEDBACK
+-- noise:
+# model (rtrif 41 45 1)
+
+# cloudsmode 0
+# clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+# cloudsblend (rperf 0.8 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.385 0.5) (rperf 0.5 0.8 0.5)
+
+d1 $ n (scale "minor" $ "[< [0,2,4] [3,5,0] [5,0,2] [[4,-1,1] [2,4,6]] >]"|-7) |+n root
+  # s "braids"
+  # timbre (rsinf 0.1 0.9 (1/16))
+  # color (rsinf 0.1 0.9 (1/16))
+  # model 23
+  # adsr "0.2:1:1:1"
+  # gain 0.8
+  # cutoff 5000
+  # verb 0.8 1 0.5 0.2
+  # cloudsmode 0
+  # clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+  # cloudsblend (rperf 0.1 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.39 0.5) (rperf 0.5 0.8 0.5)
+
+d2 $ arp "updown" $ n (scale "minor" $ "[< [0,2,4,6] [3,5,0,2] [5,0,2,4] [[4,-1,1,3] [2,4,6,1]] >]"|+7) |+n root
+  # s "braids"
+  # timbre (rsinf 0.1 0.9 (1/16))
+  # color (rsinf 0.1 0.9 (1/16))
+  # model 22
+  # adsr "0.2:1:1:1"
+  # gain 0.8
+  -- # cutoff 5000
+  # verb 0.8 1 0.5 0.2
+  # cloudsmode 0
+  # clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+  # cloudsblend (rperf 0.1 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.39 0.5) (rperf 0.5 0.8 0.5)
+
+d2 $ arp "<updown>" $ note(scale "minor" $ "[<[0,1,8?,4]*2 [4,~,[13,6],1]*2 [3,5,12,0]*2 [5,0,7,2]*2, <~ ~ ~ ~ ~ ~ ~@1.5 [7 7 7]*2>>*2]/2"|+7) |+n root
+  # s "braids"
+  # timbre (rsinf 0.1 0.9 (1/16))
+  # color (rsinf 0.1 0.9 (1/16))
+  # model 22
+  # adsr "0.2:1:1:1"
+  # gain 0.8
+  -- # cutoff 5000
+  # verb 0.8 1 0.5 0.2
+  # cloudsmode 0
+  # clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+  # cloudsblend (rperf 0.1 1.0 0.5) (rperf 0.2 0.8 0.5) (rperf 0.38 0.39 0.5) (rperf 0.5 0.8 0.5)
+
+
+
+d2 $ n (scale "minor" $ ply 3 $ "[< 0 3 5 [4 2] >]"|-21) |+n root
+  # s "braids"
+  # adsr "0.1:1:1:1"
+  # model 23
+  # timbre (rsinf 0.1 0.9 0.2)
+  # color  (rsinf 0.1 0.9 0.3)
+  # gain 1.2
+  # mu 1.3
+  # cutoff 2000
+
+d6 $ stack [
+  "[bassdm(3,8)]" # n (irand 23)
+  , degBy 0.2 $ s "[east(3,8)]" # n 6
+  , degBy 0.2 $ s "[future(3,8)]"
+] # gain   (rrandf 0.9 1.1 8)
+  # speed  (rrandf 0.5 1 4)
+
+d7 $ stack [
+  degBy 0.1 $ s "[hh27*16]" # cutoff (rperf 4500 14500 (1/16))
+  , s "[hh*8]"
+  , degBy 0.8 $ s "[east*2]" # n (irand 5) # cutoff (rperf 2500 6000 (1/16)) # gain 0.3
+] # pan    (rperf 0.3 0.8 16)
+  # gain   (rperf 0.8 1.2 8)
+  # speed  (rrandf 0.3 0.8 4)
+  # cloudsmode 0
+  # clouds      (rsinf 0.3 0.7 (1/3)) 0.8 0.9 0.9
+  # cloudsblend (rsinf 0.3 0.7 (1/3)) 0.9 0.3 0.9
+
+
+d9 $ n (scale "minor" $ "[< 0 3 5 2 >]/8"|-14) |+n root
+# s "supernoise"
+# voice      (rperf 0.5 1.0 0.5)
+# accelerate (rperf 0.6 1.0 0.5)
+# slide      (rperf 0.3 0.8 0.5)
+  -- # resonance (rperf 0.3 0.8 64)
+  # pan    (rperf 0.3 0.8 1)
+  # gain   (rperf 0.5 0.6 1)
+  # cloudsmode 0
+  # clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+  # cloudsblend 1 (rperf 0.2 0.8 0.5) (rperf 0.38 0.385 0.5) (rperf 0.5 0.8 0.5)
+  # verb 0.8 0.6 0.2 1
+  # hcutoff 400
+
+
+d8 $ n (scale "minor" $ "[< 0 3 5 2 >]/2"|-14) |+n root
+# s "braids"
+# model (scramble 4 $ "<41 42 44 41>/16") -- noise models
+# adsr "0.7:.8:.8:3"
+# timbre (rperf 0.0 1.0 0.5)
+# color  (rperf 0.0 1.0 0.5)
+# pan    (rperf 0.3 0.8 0.5)
+# mu     (rperf 0.5 4 0.5)
+# verb 0.8 0.6 0.2 1
+# cloudsmode 0
+# clouds      (rperf 0.1 0.8 0.5) (rperf 0.5 0.8 0.5) (rperf 0.8 1.0 0.5) (rperf 0.5 0.8 0.5)
+# cloudsblend 1 (rperf 0.2 0.8 0.5) (rperf 0.38 0.385 0.5) (rperf 0.5 0.8 0.5)
+
+hush
+
+-- lya's outro <4
+d10 $ s "0" # n "0"
+  # gain 0.85
+  # verb 0.8 0.6 0.2 1
+  # cloudsmode 0
+  # clouds      0.10 0.8 0.85 0.7
+  # cloudsblend 0.95 0.6 0.38 0.8
+
+-- IMMEDIATELY
+d10 $ silence
