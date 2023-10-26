@@ -3,8 +3,8 @@ clear()
 // HYDRA EXTENSIONS
 window.root_win = "file:///C:/Users/bodie/Desktop/misc/art/hydra/.hydra-extensions"
 window.root_web = "https://hydra-extensions.glitch.me"
-window.root_pop = ""
-window.root = root_win
+window.root_pop = "/home/bodie/projects/hydra-stress/hydra/hydra-extensions"
+window.root = root_pop
 await loadScript(root+"/hydra-arrays.js")
 await loadScript(root+"/hydra-wrap.js")
 await loadScript(root+"/hydra-text.js")
