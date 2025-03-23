@@ -1,14 +1,17 @@
+atom.commands.dispatch( atom.views.getView(atom.workspace.getActiveTextEditor()), 'atom-hydra:toggle')
+
 // run all of this in the console directly!!
-clear()
+// clear()
 // HYDRA EXTENSIONS
 window.root_win = "file:///C:/Users/bodie/Desktop/misc/art/hydra/.hydra-extensions"
 window.root_web = "https://hydra-extensions.glitch.me"
-window.root_pop = "/home/bodie/projects/hydra-stress/hydra/hydra-extensions"
+window.root_pop = "/home/bodie/projects/gigs/hydra-stress/hydra/hydra-extensions"
 window.root = root_pop
-await loadScript(root+"/hydra-arrays.js")
-await loadScript(root+"/hydra-wrap.js")
-await loadScript(root+"/hydra-text.js")
-await loadScript(root+"/hydra-tap.js")
+// on web: await
+loadScript(root+"/hydra-arrays.js")
+loadScript(root+"/hydra-wrap.js")
+loadScript(root+"/hydra-text.js")
+loadScript(root+"/hydra-tap.js")
 
 hydraText.font = "serif"
 hydraText.lineWidth = "1%"
@@ -48,10 +51,13 @@ function onMIDIFailure() {
 var cc=Array(128).fill(0.5)
 
 // MY OWN HACK: copied from hydra-tap.js
-const tapper = new BPM();
-let resetInterval = 0;
+let done = false;
 
-getMIDIMessage = function(midiMessage) {
+while(BPM != undefined && done == false) {
+  const tapper = new BPM();
+  let resetInterval = 0;
+
+  getMIDIMessage = function(midiMessage) {
     var arr = midiMessage.data
     var index = arr[1]
     // console.log('Midi received on cc#' + index + ' value:' + arr[2])    // uncomment to monitor incoming Midi
@@ -64,11 +70,13 @@ getMIDIMessage = function(midiMessage) {
       clearInterval(resetInterval);
       const tap = tapper.tap();
       if (tap.count > 1) {
-          _hydra.sandbox.set('bpm', Math.round(tap.avg));
+        _hydra.sandbox.set('bpm', Math.round(tap.avg));
       }
       resetInterval = setInterval(tapper.reset.bind(tapper), 1500);
       console.log(_hydra.sandbox.bpm, Math.round(tap.avg))
     } else if(index==1 && arr[2] != 64){
       _hydra.sandbox.set('time', 0);
     }
+  }
+  done = true;
 }
