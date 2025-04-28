@@ -15,13 +15,13 @@ s0.initScreen(2)
 
 s1.initScreen(3)
 
-// i want the first one to be masked by the osc, and the second one too but a bit
+var m0 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
+var m1 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
+.invert()
+m0.out(o1)
+m1.out(o2)
+src(s1).mask(m1)
+  .add(src(s0).mask(m0))
+  .out()
 
-src(s0).color(.5,.5,1)
-.mask(osc().thresh())
-.add(
-  src(s1)
-  .mask(osc().thresh().scrollX(1.1,.01))
-  .color(.5,.5,1)
-)
-.out(o0)
+render(o0)
