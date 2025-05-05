@@ -55,13 +55,13 @@ src(o0)
 
 
 // background
-var m0 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
-var m1 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
+var m0 = osc([120,60,16].fast(0.2)).thresh().rotate(0,.04)
+var m1 = osc([120,60,16].fast(0.2)).thresh().rotate(0,.04)
 .invert()
 var c1=[0.5, 1].fast(1/4).smooth(), c2=0.5, c3=1.1
 src(s0).color(c1,c2,c3)
-.mult(m1,[0.8,1].smooth().fast(1/7))
-.add(src(s1).color(c1,c2,c3).mask(m2),)
+.mult(m0,[0.8,1].smooth().fast(1/7))
+.add(src(s1).color(c1,c2,c3).mask(m1),)
 .modulate(s0, [0,0.01,0.1,0.01].fast(1/4).smooth())
 .out()
 
