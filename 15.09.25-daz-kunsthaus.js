@@ -36,14 +36,21 @@ osc(Math.PI * 2, .2, 1)
   .scale(() => am(1.01, -.02, 2))
   .out(o2)
 
+
 // audio layer
-src(o0).modulate(o0).pixelate([...Array(4).fill(innerWidth),100].smooth(.1),[...Array(4).fill(innerHeight),50].smooth(.01))
-  .add(src(o1).pixelate([...Array(4).fill(innerWidth),1000,500,100,50,12].smooth(.1),[...Array(4).fill(innerHeight),1000,500,100,12].smooth(.8).fast(.25)),[0.1,0.2].smooth())
+var msub=shape(2,1).scrollY(.2)
+src(o0)
+  .pixelate(
+    [...Array(4).fill(innerWidth),100].smooth(.1),
+    [...Array(4).fill(innerHeight),50].smooth(.01))
   .diff(shape(2.5).scale(()=>am(0.2,0.9)).rotate(0,.1)
   .repeat(()=>am(7,3,0),()=>am(8,1,numBins),()=>am(1,1,0),()=>am(1,1,2))
   .modulate(noise()).modulate(o0,()=>am(.2,1)).color([1,0,0].smooth(.1).fast(.0125),[0,.5,0].smooth(.1).fast(.0126),[0,0,1].fast(.0124).smooth(.1))
   .add(o2,0.01)
-  .pixelate([2000, 1000, 500, 50, 10].fast(1/7),2000))
+  .pixelate(
+    [...Array(4).fill(innerWidth ),1000,500,100,50,12].smooth(.1),
+    [...Array(4).fill(innerHeight),1000,500,100,12].smooth(.8).fast(.25)))
+  .modulate(src(s1).mask(msub), [-.05,0,.05].fast(1/16).smooth(.2))
   .out(o3)
 
 
@@ -53,8 +60,8 @@ var m1 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
 .invert()
 var c1=[0.5, 1].fast(1/4).smooth(), c2=0.5, c3=1.1
 src(s0).color(c1,c2,c3)
-.mult(m1,[0.5,1].smooth().fast(1/7))
-.add(src(s1).color(c1,c2,c3).mask(m2))
+.mult(m1,[0.8,1].smooth().fast(1/7))
+.add(src(s1).color(c1,c2,c3).mask(m2),)
 .modulate(s0, [0,0.01,0.1,0.01].fast(1/4).smooth())
 .out()
 
