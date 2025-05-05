@@ -45,7 +45,10 @@ src(o0)
     [...Array(4).fill(innerHeight),50].smooth(.01))
   .diff(shape(2.5).scale(()=>am(0.2,0.9)).rotate(0,.1)
   .repeat(()=>am(7,3,0),()=>am(8,1,numBins),()=>am(1,1,0),()=>am(1,1,2))
-  .modulate(noise()).modulate(o0,()=>am(.2,1)).color([1,0,0].smooth(.1).fast(.0125),[0,.5,0].smooth(.1).fast(.0126),[0,0,1].fast(.0124).smooth(.1))
+  .modulate(noise()).modulate(o0,()=>am(.2,1)).color(
+    [1, 0, 0].smooth(.1).fast(.0125),
+    [0,.5, 0].smooth(.1).fast(.0126),
+    [0, 0, 1].fast(.0124).smooth(.1))
   .add(o2,0.01)
   .pixelate(
     [...Array(4).fill(innerWidth ),1000,500,100,50,12].smooth(.1),
@@ -55,13 +58,13 @@ src(o0)
 
 
 // background
-var m0 = osc([120,60,16].fast(0.2)).thresh().rotate(0,.04)
-var m1 = osc([120,60,16].fast(0.2)).thresh().rotate(0,.04)
+var m0 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
+var m1 = osc([240,120,60,30,15,8]).thresh().rotate(0,.1).pixelate()
 .invert()
 var c1=[0.5, 1].fast(1/4).smooth(), c2=0.5, c3=1.1
 src(s0).color(c1,c2,c3)
-.mult(m0,[0.8,1].smooth().fast(1/7))
-.add(src(s1).color(c1,c2,c3).mask(m1),)
+.mult(m1,[0.8,1].smooth().fast(1/7))
+.add(src(s1).color(c1,c2,c3).mask(m2),)
 .modulate(s0, [0,0.01,0.1,0.01].fast(1/4).smooth())
 .out()
 
