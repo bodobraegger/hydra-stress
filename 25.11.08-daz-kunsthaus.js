@@ -14,9 +14,9 @@ hush()
 canvas.setRelativeSize(1);
 bpm = 140
 
-s0.initScreen(2)
+s0.initScreen(1)
 
-s1.initScreen(3)
+s1.initScreen(4)
 
 
 // jellyfish
@@ -51,9 +51,10 @@ src(o0)
     [0, 0, 1].fast(.0124).smooth(.1))
   .add(o2,0.01)
   .pixelate(
-    [...Array(4).fill(innerWidth ),1000,500,100,50,12].smooth(.1),
-    [...Array(4).fill(innerHeight),1000,500,100,12].smooth(.8).fast(.25)))
-  .modulate(src(s1).mask(msub), [-.05,0,.05].fast(1/16).smooth(.2))
+    [...Array(2).fill(innerWidth ),1000,500,100,50,12].smooth(.1),
+    [...Array(2).fill(innerHeight),1000,500,100,12].smooth(.8).fast(.25)))
+  .modulate(src(s1).mask(msub), [-.05,0,.05, .15].fast(1/16).smooth(.2))
+  // .colorama([0, 0.0001, 0.0002].fast(1/8).smooth(0.4))
   .out(o3)
 
 
