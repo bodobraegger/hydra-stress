@@ -1,6 +1,6 @@
 atom.commands.dispatch( atom.views.getView(atom.workspace.getActiveTextEditor()), 'atom-hydra:toggle')
 
-// run all of this in the console directly!!
+// run all of this in the console directly!! (ctrl+shift+i)
 // clear()
 // HYDRA EXTENSIONS
 window.root_win = "file:///C:/Users/bodie/Desktop/misc/art/hydra/.hydra-extensions"

@@ -1,6 +1,6 @@
-var root = "/home/bodie/projects/hydra-stress/hydra"
-    root = "/Users/bodie/Desktop/misc/art/hydra"
-var extension_location = root+'/.hydra-extensions/'
+var root = "/home/bodie/projects/gigs/hydra-stress/hydra"
+    // root = "/Users/bodie/Desktop/misc/art/hydra"
+var extension_location = root+'/hydra-extensions/'
 loadScript(extension_location + "hydra-arrays.js")
 loadScript(extension_location + "hydra-blend.js")
 loadScript(extension_location + "hydra-canvas.js")

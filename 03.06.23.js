@@ -1,4 +1,4 @@
-let root = "/home/bodie/projects/hydra-stress/hydra"
+let root = "/home/bodie/projects/gigs/hydra-stress/hydra"
 let extension_location = root+'/hydra-extensions/'
 loadScript(extension_location + "hydra-arrays.js")
 loadScript(extension_location + "hydra-blend.js")
