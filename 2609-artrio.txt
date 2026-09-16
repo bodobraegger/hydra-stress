@@ -1,0 +1,183 @@
+========================================
+PORTUGUÊS (BR)
+========================================
+
+LIFE VISUALS
+
+Este set é um sistema visual programado ao vivo, escrito em Hydra. Ele nasceu de
+uma colaboração com a regula.rec, o grupo de amigos e selo musical de Zurique, e
+mudou de forma ao longo de anos tocando juntos, desde uma primeira versão na Rote
+Fabrik, na Suíça, em 2022, até a que roda esta noite.
+
+Nada aqui é pré-renderizado. A imagem é construída a partir de poucos osciladores
+e formas que se realimentam através de quatro buffers, então cada quadro é feito
+dos quadros anteriores. O resultado não se estabiliza: a cor passa por limiares
+abruptos, as formas se dobram através de campos de ruído e voronoi, e a imagem
+inteira se pixeliza e se remonta enquanto roda.
+
+O sistema escuta onde consegue. Quando há som na sala, uma análise de frequência
+dele controla a escala, a repetição e o brilho dos visuais, e um detector de
+batida amarra o movimento ao ritmo. Deixada em silêncio, a peça ainda respira e
+muda sozinha, movida pelo seu relógio interno. O som a empurra mais longe, mas
+ela nunca para.
+
+Como a peça é código ao vivo e em constante mudança, ela nunca é igual duas
+vezes. Está mais perto de um instrumento do que de um vídeo: uma máquina de
+imagens que se toca, na sala, durante todo o dia.
+
+
+AS CÂMERAS
+
+Parte do que você vê não é sintético. As duas câmeras da loja, a da frente e a de
+segurança, mandam suas imagens direto para o sistema, e tudo acima dobra essas
+vistas ao vivo sobre si mesmas.
+
+Esta é a parte que vale a pena observar. Uma câmera costuma ser uma ferramenta de
+segurança: ela olha para que outra pessoa possa conferir depois. Aqui as mesmas
+imagens são trazidas para a sala e transformadas em algo para se olhar agora, para
+as pessoas diante delas. A rua, a porta, quem quer que entre, tudo isso vira
+material, curvado através de realimentação e cor até mal se reconhecer, e então
+volta à tona por um instante antes de se dobrar de novo.
+
+Versões anteriores deste set foram alimentadas por olhos mais estranhos: câmeras
+ao vivo dentro de galinheiros, imagens de vigilância de usinas de energia,
+transmissões subaquáticas de expedições oceânicas, e mais, todas elas
+transmissões públicas deixadas rodando em algum lugar do mundo. A ideia é simples.
+As câmeras já estão ligadas e já estão observando. Este set toma algumas delas
+emprestadas e devolve o olhar delas para a sala como luz. Artistas trabalham esse
+terreno há anos, de Xu Bing, que montou um filme inteiro com imagens de vigilância
+achadas na internet, a Manu Luksch, que escreveu um manifesto para fazer filmes só
+com câmeras públicas. Nada aqui é gravado e nada sai da sala. O processamento é ao
+vivo e local, e termina quando a noite termina.
+
+
+COMO RODAR NA NOITE
+
+Você precisa do computador, do projetor e das duas câmeras: a da frente da loja e
+a de segurança. Aqui está a preparação, passo a passo.
+
+1. O que é o Hydra. O Hydra é uma ferramenta para fazer vídeo ao vivo em um
+   navegador. Você escreve linhas curtas de código, e cada linha adiciona uma
+   fonte de vídeo ou um efeito sobre a anterior. Não há arquivo para renderizar
+   nem linha do tempo. A imagem é construída e alterada enquanto roda. Você não
+   precisa entender o código para iniciá-lo.
+
+2. Abra o sketch. No computador, abra o link do sketch abaixo em um navegador
+   (Chrome ou Firefox). O código completo já está no link, então ele carrega
+   pronto para rodar. Ligue o projetor como uma segunda tela e mova a janela do
+   navegador para o projetor, ou espelhe as telas.
+
+   (mesmo link acima / same link as above)
+
+3. Mostre as duas câmeras em uma tela. O Hydra lê as câmeras como uma entrada de
+   tela (screen input): ele copia o que estiver em uma tela. Então as imagens das
+   duas câmeras precisam primeiro estar visíveis neste computador. Abra a página
+   ou o aplicativo de cada câmera e coloque as duas janelas lado a lado na mesma
+   tela, para que as duas apareçam.
+
+4. Inicie o sketch e compartilhe essa tela. Clique dentro do código e pressione o
+   botão de Play, ou Ctrl+Shift+Enter (Cmd+Shift+Enter no Mac), para rodar tudo. O
+   navegador vai perguntar qual tela ou janela compartilhar. Escolha a tela
+   inteira que mostra as duas janelas das câmeras e permita. As imagens das duas
+   câmeras agora fluem para os visuais como a fonte chamada s0.
+
+5. Se pedir o microfone. Os visuais captam o som ambiente quando conseguem, então
+   o navegador pode pedir para usar o microfone. Permita e o som da sala vai
+   alimentar o movimento. Se você pular isso ou não houver som, a peça ainda roda
+   e continua mudando sozinha.
+
+
+Você encontra mais de mim em https://bbo.do e no Instagram em
+https://instagram.com/bodo.braegger
+
+
+========================================
+ENGLISH
+========================================
+
+LIFE VISUALS
+
+This set is a live-coded visual system written in Hydra. It grew out of a
+collaboration with regula.rec, the Zurich based friend-group and music label,
+and it has changed shape over years of playing together, from a first version at
+Rote Fabrik in Switzerland in 2022 to the one running tonight.
+
+Nothing here is pre-rendered. The image is built from a small number of
+oscillators and shapes that feed back into themselves through four buffers, so
+every frame is made from the frames before it. The result does not settle: color
+cycles through hard thresholds, forms fold through noise and voronoi fields, and
+the whole picture pixelates and reassembles as it runs.
+
+The system listens where it can. When there is sound in the room, a frequency
+analysis of it drives the scale, repetition, and brightness of the visuals, and
+a beat detector ties the motion to the rhythm. Left in silence, the piece still
+breathes and changes on its own, moving on its internal clock. Sound pushes it
+further, but it never stops.
+
+Because the piece is live and ever-changing code, it is never the same twice. It
+is closer to an instrument than to a video: a machine for images that is played,
+in the room, for the length of the day.
+
+
+THE CAMERAS
+
+Some of what you see is not synthetic. The two cameras in the store, the one on
+the front of the shop and the security camera, feed their pictures straight into
+the system, and everything above folds those live views back on themselves.
+
+This is the part worth watching. A camera is usually a tool of security: it
+looks so that someone else can check later. Here the same feeds are pulled into
+the room and turned into something to look at now, for the people in front of
+them. The street, the door, whoever walks in, all of it becomes material, bent
+through feedback and colour until it is barely itself, then surfaces again for a
+moment before it folds away.
+
+Earlier versions of this set were fed by stranger eyes: live cameras inside
+chicken coops, surveillance footage from power plants, underwater feeds from
+ocean expeditions, and more, all of them public streams left running somewhere
+in the world. The idea is simple. The cameras are already on and already
+watching. This set borrows a few of them and gives their gaze back to the room
+as light. Artists have worked this ground for years, from Xu Bing, who built a
+whole film out of found surveillance footage, to Manu Luksch, who wrote a
+manifesto for making films only from public cameras. Nothing here is recorded
+and nothing leaves the room. The processing is live and local, and it ends when
+the night ends.
+
+
+RUNNING IT ON THE NIGHT
+
+You need the computer, the projector, and both cameras: the one on the front of
+the shop and the security camera. Here is the setup, step by step.
+
+1. What Hydra is. Hydra is a tool for making video live in a web browser. You
+   write short lines of code, and each line adds a video source or an effect on
+   top of the last. There is no file to render and no timeline. The picture is
+   built and changed while it runs. You do not need to understand the code to
+   start it.
+
+2. Open the sketch. On the computer, open the sketch link below in a browser
+   (Chrome or Firefox). The full code is already in the link, so it loads ready
+   to run. Connect the projector as a second screen and move the browser window
+   onto the projector, or mirror the screens.
+
+   https://hydra.ojack.xyz/?code=YnBtJTNEMTUwJTBBc3BlZWQlM0QuNSUwQWJlYXRzJTIwJTNEJTIwMCUwQWEuc2hvdygpJTBBbnVtQmlucyUzRDQlMEFhLnNldEJpbnMobnVtQmlucyUyQjEpJTBBJTJGJTJGJTIwYS5zZXRDdXRvZmYoLjIpJTBBJTJGJTJGJTIwYS5zZXRTY2FsZSgyKSUwQWEuc2V0U21vb3RoKDApJTBBYS5vbkJlYXQlMjAlM0QlMjAoKSUyMCUzRCUzRSUyMCU3QmJlYXRzJTJCJTJCJTdEJTBBJTBBYW0lMjAlM0QlMjAoYyUyMCUzRCUyMDAuMDElMkMlMjB2JTIwJTNEJTIwMC4xJTJDJTIwaSUyMCUzRCUyMDApJTIwJTNEJTNFJTIwYyUyMCUyQiUyMHYlMjAqJTIwYS5mZnQlNUJpJTVEJTBBJTBBczAuaW5pdFNjcmVlbigyJTIwKSUwQXJlbmRlcigpJTBBJTBBbSUzRHNoYXBlKDQlMkMuNCUyQy4zKS5zY2FsZSguNSUyQzEpLnNjcm9sbFkoLjIpLmludmVydCgpJTJDJTVCLjMlMkMuOCU1RC5zbW9vdGgoKSUwQXdhbGslMjAlM0QlMjAlNUIuLi5BcnJheSgxMCkua2V5cygpJTVELm1hcChlJTNEJTNFZSouMDEpLmZhc3QoMC4xKS5zbW9vdGgoMSklMEElMEFjb2xvckNoYW5nZVNwZWVkJTIwJTNEJTIwMSUwQSUwQSUwQW9zYyg0NCUyQy4xJTJDMS40KS5yb3RhdGUoMCUyQy4xKS50aHJlc2goJTVCMC41JTJDMC45JTVELnNtb290aCgxKS5mYXN0KC4xMjUpKSUwQSUyMCUyMC5jb2xvciglMEElMjAlMjAlMjAlMjAlNUIuLi5BcnJheSg4KS5maWxsKDEpJTJDMSUyQzAlNUQuZmFzdChjb2xvckNoYW5nZVNwZWVkKS5zbW9vdGgoLjQpJTJDJTBBJTIwJTIwJTIwJTIwJTVCLi4uQXJyYXkoOCkuZmlsbCgwKSUyQy41JTJDLjIlNUQuZmFzdChjb2xvckNoYW5nZVNwZWVkKS5zbW9vdGgoLjQpJTJDJTBBJTIwJTIwJTIwJTIwJTVCLi4uQXJyYXkoOCkuZmlsbCgwKSUyQzElMkMwJTVELmZhc3QoY29sb3JDaGFuZ2VTcGVlZCkuc21vb3RoKC40KSklMEElMjAlMjAubW9kdWxhdGUobm9pc2UoMy41KSkubW9kdWxhdGUobzApLmJsZW5kKG8wJTJDJTVCLjYlMkMuOSU1RC5zbW9vdGgoKS5mYXN0KC4zNCkpLnNjYWxlKCU1Qi45OSUyQzEuMDElNUQuc21vb3RoKDEpLmZhc3QoLjEyNSkpLm1vZHVsYXRlU2Nyb2xsWShvMCkuYmxlbmQobzApLm1hc2soc2hhcGUoNCUyQy44KSklMEElMjAlMjAlMkYlMkYubXVsdChtKSUwQSUyMCUyMC5vdXQoKSUwQSUwQW9sJTNEb3NjKCU1QjExJTJDMjIlNUQuc21vb3RoKC45KS5mYXN0KC4wMSklMkMuMDElMkMxLjQpLm1vZHVsYXRlKHZvcm9ub2koKCklM0QlM0VNYXRoLnJvdW5kKGFtKDIlMkMuNSUyQzApKSklMkMuMikuY29udHJhc3QoJTVCLjUlMkMxJTVELnNtb290aCgxKS5mYXN0KC4wMykpJTBBb2wxJTNEc3JjKG8xKS5tb2R1bGF0ZVJvdGF0ZShvMSUyQy41KSUwQSUyMCUyMCUyMCUyMCUyMCUyMC5hZGQob3NjKE1hdGguUEkqOCUyQy4xJTJDMS41KSUyQy4wNSklMEElMjAlMjAlMjAlMjAubXVsdCglMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBzaGFwZSgzJTJDLjclMkMuOSkubHVtYSguMiUyQy4wNSklMEElMjAlMjAlMjAlMjApJTBBJTIwJTIwJTIwJTIwLnNjYWxlKC45KSUwQSUyMCUyMCUyMCUyMC5zYXR1cmF0ZSgxLjA3KSUwQSUyMCUyMCUyMCUyMC5jb250cmFzdCguOTYpJTBBJTIwJTIwJTIwJTIwLmh1ZSgtLjAzKSUwQSUyMCUyMCUyMCUyMC5jb2xvcigxLjA1JTJDMSUyQzEpJTBBJTBBc3JjKG8wKSUwQSUyMCUyMC5hZGQob2wubWFzayhzaGFwZSglNUI0JTJDOTklMkM0JTVELmZhc3QoLjI1KS5zbW9vdGgoMSklMkMlNUIuLi5BcnJheSgzKS5maWxsKC4zKSUyQy44JTVELnNtb290aCguOSkuZmFzdCguMDEpJTJDJTVCMCUyQy4yJTJDLjAxJTVELnNtb290aCgxKSkuc2NhbGUoMSUyQ2lubmVySGVpZ2h0JTJGaW5uZXJXaWR0aCkpJTJDJTVCMCUyQy44JTVELnNtb290aCgxKS5mYXN0KC4xMjUpKS5tb2R1bGF0ZShvMCkubW9kdWxhdGUobzElMkMlNUItLjElMkMuMSU1RC5zbW9vdGgoKS5mYXN0KC42NykpJTBBJTIwJTIwLm91dChvMSklMEElMEElMEElMEFvc2MoTWF0aC5QSSUyMColMjAyJTJDJTIwLjIlMkMlMjAxKSUwQSUyMCUyMC5jb2xvcigxJTJDJTIwLS41JTJDJTIwMSklMEElMjAlMjAubWFzayhzaGFwZSglNUIzJTJDNCUyQzglMkM5OSU1RC5zbW9vdGgoLjUpJTJDJTIwLjElMkMlMjAuNSkpJTBBJTIwJTIwLnNjYWxlKDElMkMlMjBpbm5lckhlaWdodCUyMCUyRiUyMGlubmVyV2lkdGgpJTBBJTIwJTIwLm1vZHVsYXRlKG5vaXNlKCU1Qi4uLkFycmF5KDUpLmtleXMoKSU1RC5zbW9vdGgoMSkuZmFzdCguMikpKSUwQSUyMCUyMC5tb2R1bGF0ZVNjYWxlKG9zYygyMCUyQyUyMC4wMSklMkMlMjAtLjUpJTBBJTIwJTIwLmJsZW5kKHNyYyhvMiklMEElMjAlMjAlMjAlMjAuc2Nyb2xsWSgtMC4xKSUyQyUyMDAuMiklMEElMjAlMjAubW9kdWxhdGUobzIlMkMlMjAoKSUyMCUzRCUzRSUyMC4xJTIwKiUyME1hdGguY29zKHRpbWUpKSUwQSUyMCUyMC5jb2xvcmFtYSglNUIwJTJDJTIwLjAyJTVELnNtb290aCgxKSklMEElMjAlMjAuc2F0dXJhdGUoKCklMjAlM0QlM0UlMjBhbSgxJTJDJTIwLjIlMkMlMjAwKSklMEElMjAlMjAubHVtYSgoKSUyMCUzRCUzRSUyMGFtKDAuMDA4JTJDJTIwLjAxJTJDJTIwMiklMkMlMjAwKSUwQSUyMCUyMC5ibGVuZChvMiUyQyUyMC45KSUwQSUyMCUyMC5zY2FsZSgoKSUyMCUzRCUzRSUyMGFtKDEuMDElMkMlMjAtLjAyJTJDJTIwMikpJTBBJTIwJTIwLm91dChvMiklMEElMEFzcmMobzApJTBBJTIwJTIwLmFkZChzcmMobzIpLnNjYWxlKCU1QjElMkMuNSUyQy44JTVELnNtb290aCgxKS5mYXN0KHNwZWVkKSkubWFzayhzaGFwZSglNUI0JTJDMjIlNUQuc21vb3RoKC43KS5mYXN0KC4xMjUpJTJDJTVCLjMlMkMuOCU1RC5zbW9vdGgoLjcpLmZhc3QoLjEyNSklMkMlMjAlNUIwJTJDLjIlNUQuc21vb3RoKC43KS5mYXN0KC4xMjUpKS5zY2FsZSgxJTJDaW5uZXJIZWlnaHQlMkZpbm5lcldpZHRoKSkubW9kdWxhdGUobzApKSUwQSUyMCUyMC5vdXQobzEpJTBBJTBBJTBBc3JjKHMwKS5tb2R1bGF0ZShvMSkucGl4ZWxhdGUoJTVCLi4uQXJyYXkoNCkuZmlsbChpbm5lcldpZHRoKSUyQzEwMCU1RC5zbW9vdGgoLjEpJTJDJTVCLi4uQXJyYXkoNCkuZmlsbChpbm5lckhlaWdodCklMkM1MCU1RC5zbW9vdGgoLjAxKSklMEElMjAlMjAuYWRkKHNyYyhvMSkucGl4ZWxhdGUoJTVCLi4uQXJyYXkoNCkuZmlsbChpbm5lcldpZHRoKSUyQzEwMDAlMkM1MDAlMkMxMDAlMkM1MCUyQzEyJTVELnNtb290aCguMSklMkMlNUIuLi5BcnJheSg0KS5maWxsKGlubmVySGVpZ2h0KSUyQzEwMDAlMkM1MDAlMkMxMDAlMkMxMiU1RC5zbW9vdGgoLjgpLmZhc3QoLjI1KSklMkMlNUIxJTJDMiU1RC5zbW9vdGgoKSklMEElMjAlMjAuZGlmZihzaGFwZSgyLjUpLnNjYWxlKCgpJTNEJTNFYW0oMC4yJTJDMC45KSkucm90YXRlKDAlMkMuMSklMEElMjAlMjAucmVwZWF0KCgpJTNEJTNFYW0oNyUyQzMlMkMwKSUyQygpJTNEJTNFYW0oOCUyQzElMkNudW1CaW5zKSUyQygpJTNEJTNFYW0oMSUyQzElMkMwKSUyQygpJTNEJTNFYW0oMSUyQzElMkMyKSklMEElMjAlMjAubW9kdWxhdGUobm9pc2UoKSkubW9kdWxhdGUobzMlMkMoKSUzRCUzRWFtKC4yJTJDMSkpLmNvbG9yKCU1QjElMkMwJTJDMCU1RC5zbW9vdGgoLjEpLmZhc3QoLjAxMjUpJTJDJTVCMCUyQy41JTJDMCU1RC5zbW9vdGgoLjEpLmZhc3QoLjAxMjYpJTJDJTVCMCUyQzAlMkMxJTVELmZhc3QoLjAxMjQpLnNtb290aCguMSkpKSUwQSUyMCUyMCUyRiUyRi5tdWx0KHNoYXBlKDQlMkMuMjUpLnNjcm9sbFkoKS5pbnZlcnQoKSklMjAlMkYlMkYlMjBGT1IlMjBUQUxMJTIwREpzJTBBJTIwJTIwLm91dChvMyklMEElMEFyZW5kZXIobzMp
+
+3. Show both cameras on one screen. Hydra reads the cameras as a screen input:
+   it copies whatever is on a screen. So both camera pictures must first be
+   visible on this computer. Open each camera's web page or app, and place the
+   two windows side by side on the same screen so both are in view.
+
+4. Start the sketch and share that screen. Click into the code and press on the
+   Play Button, or Ctrl+Shift+Enter (Cmd+Shift+Enter on a Mac) to run all of it.
+   The browser will ask which screen or window to share. Choose the whole screen
+   that shows the two camera windows, and allow it. Both camera pictures now
+   flow into the visuals as the source named s0.
+
+5. If it asks for the microphone. The visuals pick up ambient sound when they
+   can, so the browser may ask to use the microphone. Allow it and the room's
+   sound will feed the motion. If you skip it or there is no sound, the piece
+   still runs and keeps changing on its own.
+
+
+You can find more of me at https://bbo.do and on Instagram at
+https://instagram.com/bodo.braegger
