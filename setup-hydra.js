@@ -50,17 +50,71 @@ window.stopCapture = (source) => {
   source.clear()
 }
 
-// WEB MIDI
-//create an array to hold our cc values and init to a normalized value
+// WEB MIDI: CC values, notes per channel, and the clock of an external sequencer (for example the FM-1).
+// osc(() => cc[74] * 60).out()                     CC values, 0 to 1
+// shape(4, () => 0.2 + hit(10, 36)).out()          kick on channel 10: 1 at the hit, 0 after 0.25 s
+// osc(10).color(1, () => hit(10, [42, 46], 0.1), 1).out()   hi-hats, shorter decay
+// osc(() => midi.channels[2].note / 4).out()       last note on channel 2
+// The clock sets bpm, and Start resets time, so arrays with .fast() stay on the beat.
+const MIDI_CHANNELS = 16
+const CLOCK_PULSES_PER_BEAT = 24
+const STATUS_NOTE_OFF = 0x80
+const STATUS_NOTE_ON = 0x90
+const STATUS_CONTROL_CHANGE = 0xb0
+const STATUS_CLOCK = 0xf8
+const STATUS_START = 0xfa
+const STATUS_CONTINUE = 0xfb
+const STATUS_STOP = 0xfc
+const CONTROLLER_ALL_NOTES_OFF = 123
+const BPM_CHANGE_THRESHOLD = 0.5
+
+// cc values are normalized to 0.0 - 1.0
 window.cc = Array(128).fill(0.5)
+window.midi = {
+  bpm: null,
+  playing: false,
+  beat: 0,
+  channels: Array.from({ length: MIDI_CHANNELS + 1 }, () => ({ note: 0, velocity: 0, gate: false })),
+}
+const noteOnTimes = Array.from({ length: MIDI_CHANNELS + 1 }, () => new Map())
+const nowSeconds = () => performance.now() / 1000
+
+// Envelope of the last note-on on a MIDI channel (1-16), for one note, a list of notes, or any note.
+window.hit = (channel, notes = null, decay = 0.25) => {
+  const wanted = notes === null ? null : [].concat(notes)
+  let last = null
+  for (const [note, event] of noteOnTimes[channel]) {
+    if (wanted && !wanted.includes(note)) continue
+    if (!last || event.time > last.time) last = event
+  }
+  if (!last) return 0
+  const age = nowSeconds() - last.time
+  return age >= decay ? 0 : (1 - age / decay) * last.velocity / 127
+}
+
+let clockPulses = 0
+let beatStartTime = null
+function receiveClock() {
+  clockPulses++
+  midi.beat = clockPulses / CLOCK_PULSES_PER_BEAT
+  if (clockPulses % CLOCK_PULSES_PER_BEAT) return
+  const time = nowSeconds()
+  if (beatStartTime !== null) {
+    const bpm = 60 / (time - beatStartTime)
+    if (midi.bpm === null || Math.abs(bpm - midi.bpm) > BPM_CHANGE_THRESHOLD) {
+      midi.bpm = Math.round(bpm * 10) / 10
+      _hydra.sandbox.set('bpm', midi.bpm)
+    }
+  }
+  beatStartTime = time
+}
 
 const tapper = new BPM()
 let resetInterval = 0
 
-function getMIDIMessage(midiMessage) {
-  const [, index, value] = midiMessage.data
-  // console.log('Midi received on cc#' + index + ' value:' + value)    // uncomment to monitor incoming Midi
-  cc[index] = (value + 1) / 128.0 // normalize CC values to 0.0 - 1.0
+function receiveControlChange(channel, index, value) {
+  cc[index] = (value + 1) / 128.0
+  if (index == CONTROLLER_ALL_NOTES_OFF) for (const state of midi.channels) state.gate = false
   // C0 on Arturia Keystep 32 is cc[0]! on release, we get value cc[0]*128-1 == 64
   if (index == 0 && value != 64) {
     // set the BPM together with the hydra-tap extension
@@ -76,7 +130,35 @@ function getMIDIMessage(midiMessage) {
   }
 }
 
+function getMIDIMessage(midiMessage) {
+  const [status, data1, data2] = midiMessage.data
+  // console.log('MIDI', status.toString(16), data1, data2)    // uncomment to monitor incoming Midi
+  if (status == STATUS_CLOCK) return receiveClock()
+  if (status == STATUS_START) {
+    clockPulses = 0
+    beatStartTime = null
+    midi.playing = true
+    return _hydra.sandbox.set('time', 0)
+  }
+  if (status == STATUS_CONTINUE) return (midi.playing = true)
+  if (status == STATUS_STOP) return (midi.playing = false)
+  const kind = status & 0xf0
+  const channel = (status & 0x0f) + 1
+  const state = midi.channels[channel]
+  if (kind == STATUS_NOTE_ON && data2 > 0) {
+    Object.assign(state, { note: data1, velocity: data2, gate: true })
+    noteOnTimes[channel].set(data1, { time: nowSeconds(), velocity: data2 })
+  } else if (kind == STATUS_NOTE_OFF || kind == STATUS_NOTE_ON) {
+    if (state.note == data1) state.gate = false
+  } else if (kind == STATUS_CONTROL_CHANGE) {
+    receiveControlChange(channel, data1, data2)
+  }
+}
+
 navigator.requestMIDIAccess()
   .then((midiAccess) => {
-    for (const input of midiAccess.inputs.values()) input.onmidimessage = getMIDIMessage
+    const listen = () => { for (const input of midiAccess.inputs.values()) input.onmidimessage = getMIDIMessage }
+    listen()
+    // devices connected later, such as the FM-1 after a restart
+    midiAccess.onstatechange = listen
   }, () => console.log('Could not access your MIDI devices.'))
