@@ -1,4 +1,6 @@
 "*":
+  "atom-hydra":
+    setupFile: "/home/bodie/projects/gigs/hydra-stress/setup-hydra.js"
   "atom-beautify":
     general:
       beautifyEntireFileOnSave: false

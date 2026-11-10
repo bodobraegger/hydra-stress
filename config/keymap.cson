@@ -35,7 +35,7 @@
   "ctrl-alt-o": "atom-hydra:toggle",
   "ctrl-enter": "atom-hydra:evalLine",
   "alt-enter": "atom-hydra:evalBlock",
-  #{ }"ctrl-shift-enter": "atom-hydra:evalCode" # not defined in pulsar
+  "ctrl-shift-enter": "atom-hydra:evalCode"
 }
 
 'atom-workspace atom-text-editor:not([mini])':
@@ -43,7 +43,7 @@
   'alt-up': 'editor:move-line-up'
   'ctrl-up': 'unset!'
   'ctrl-down': 'unset!'
-  'shift-alt-f': 'atom-beautify:beautify-editor'
+  'shift-alt-f': 'atom-hydra:formatCode'
   # 'shift-alt-f': 'formatter:format-code'
   'shift-alt-down': 'editor:duplicate-lines'
   'shift-cmd-down': 'editor:add-selection-below'
